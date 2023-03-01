@@ -59,7 +59,7 @@ setInterval(async () => {
     graphData.skyblock.x.push(time);
     graphData.skyblock.y.push(skyblockPlayersOnline);
 
-}, 60000);
+}, 30000);
 
 //run code when it closes
 process.on('SIGINT', function() {
