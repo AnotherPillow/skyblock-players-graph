@@ -1,6 +1,8 @@
-document.addEventListener('DOMContentLoaded', async function() {
-    let {economy} = await fetch('http://localhost:9999/data').then(res => res.json());
-    new Chart('ecochart', {
+document.addEventListener('DOMContentLoaded', async function () {
+
+    let { economy, skyblock } = await fetch('http://localhost:9999/data').then(res => res.json());
+
+    var eco = new Chart('ecochart', {
         type: 'line',
         data: {
             labels: economy.x,
@@ -9,11 +11,15 @@ document.addEventListener('DOMContentLoaded', async function() {
                 data: economy.y,
                 backgroundColor: 'rgba(0, 255, 0, 0.4)',
                 borderColor: 'rgba(0, 255, 0, 1)',
+
             }]
         },
+        options: {
+            animation: false
+        }
     })
-    let {skyblock} = await fetch('http://localhost:9999/data').then(res => res.json());
-    new Chart('netchart', {
+
+    var net = new Chart('netchart', {
         type: 'line',
         data: {
             labels: skyblock.x,
@@ -24,5 +30,26 @@ document.addEventListener('DOMContentLoaded', async function() {
                 borderColor: 'rgba(255, 255, 0, 1)',
             }]
         },
+        options: {
+            animation: false
+        }
     })
+
+
+    setInterval(async () => {
+
+        let { economy, skyblock } = await fetch('http://localhost:9999/data').then(res => res.json());
+
+        eco.data.labels = economy.x
+        net.data.labels = skyblock.x
+
+        eco.data.datasets[0].data = economy.y;
+        net.data.datasets[0].data = skyblock.y;
+
+        eco.update()
+        net.update()
+
+
+
+    }, 10000)
 })
