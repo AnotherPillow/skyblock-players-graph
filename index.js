@@ -59,10 +59,14 @@ setInterval(async () => {
     graphData.skyblock.x.push(time);
     graphData.skyblock.y.push(skyblockPlayersOnline);
 
+    upgradeGraphData()
+
 }, 30000);
 
 //run code when it closes
 process.on('SIGINT', function() {
-    fs.writeFileSync('graphData.json', JSON.stringify(graphData, null, 4));
+    upgradeGraphData()
     process.exit();
 });
+
+const upgradeGraphData = (graphData) => fs.writeFileSync('graphData.json', JSON.stringify(graphData, null, 4));
