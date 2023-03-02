@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
 
-    let { economy, skyblock } = await fetch('http://localhost:9999/data').then(res => res.json());
+    let { economy, skyblock } = await fetch(`${document.location.origin}/data`).then(res => res.json());
 
     var eco = new Chart('ecochart', {
         type: 'line',
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     setInterval(async () => {
 
-        let { economy, skyblock } = await fetch('http://localhost:9999/data').then(res => res.json());
+        let { economy, skyblock } = await fetch(`${document.location.origin}/data`).then(res => res.json());
 
         eco.data.labels = economy.x
         net.data.labels = skyblock.x
