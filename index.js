@@ -49,14 +49,22 @@ setInterval(async () => {
         `${day > 9 ? day : '0' + day}-${month > 9 ? month : '0' + month} ${hours> 9 ? hours : '0' + hours}:${minutes> 9 ? minutes : '0' + minutes}:${seconds > 9 ? seconds : '0' + seconds}`;
     
 
-    let econ = await sb.economy()
-    let economyPlayersOnline = econ.players_online;
+    let economyPlayersOnline = 0;
+    
+    try {            
+        let econ = await sb.economy()
+        economyPlayersOnline = econ.players_online;
+    } catch {}
+
     console.log(`[${time}] Economy Players Online: ${economyPlayersOnline}`);
     graphData.economy.x.push(time);
     graphData.economy.y.push(economyPlayersOnline);
 
-    let surv = await sb.survival()
-    let skyblockPlayersOnline = surv.players_online;
+    let skyblockPlayersOnline = 0;
+    try {
+        let surv = await sb.survival()
+        skyblockPlayersOnline = surv.players_online;
+    } catch {}
     console.log(`[${time}] Skyblock Players Online: ${skyblockPlayersOnline}`);
     graphData.skyblock.x.push(time);
     graphData.skyblock.y.push(skyblockPlayersOnline);
