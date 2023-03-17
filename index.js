@@ -40,7 +40,6 @@ app.get('/data', function(req, res) {
 })
 
 setInterval(async () => {
-    let date = Date.now();
     let hours = new Date().getHours();
     let minutes = new Date().getMinutes();
     let seconds = new Date().getSeconds();
@@ -62,14 +61,14 @@ setInterval(async () => {
     graphData.skyblock.x.push(time);
     graphData.skyblock.y.push(skyblockPlayersOnline);
 
-    upgradeGraphData(graphData)
+    updateGraphData(graphData)
 
 }, 60000);
 
 //run code when it closes
 process.on('SIGINT', function() {
-    upgradeGraphData(graphData)
+    updateGraphData(graphData)
     process.exit();
 });
 
-const upgradeGraphData = (graphData) => fs.writeFileSync('graphData.json', JSON.stringify(graphData, null, 4));
+const updateGraphData = (graphData) => fs.writeFileSync('graphData.json', JSON.stringify(graphData, null, 4));
