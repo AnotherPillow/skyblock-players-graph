@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
 
-    let { economy, skyblock } = await fetch(`${document.location.origin}/data`).then(res => res.json());
+    let { economy, skyblock, events } = await fetch(`${document.location.origin}/data`).then(res => res.json());
 
     var eco = new Chart('ecochart', {
         type: 'line',
@@ -35,19 +35,38 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     })
 
+    var evs = new Chart('eventchart', {
+        type: 'line',
+        data: {
+            labels: events.x,
+            datasets: [{
+                label: 'Events',
+                data: events.y,
+                backgroundColor: 'rgba(255, 0, 0, 0.4)',
+                borderColor: 'rgba(255, 0, 0, 1)',
+            }]
+        },
+        options: {
+            animation: false
+        }
+    })
+
 
     setInterval(async () => {
 
-        let { economy, skyblock } = await fetch(`${document.location.origin}/data`).then(res => res.json());
+        let { economy, skyblock, events } = await fetch(`${document.location.origin}/data`).then(res => res.json());
 
         eco.data.labels = economy.x
         net.data.labels = skyblock.x
+        evs.data.labels = events.x
 
         eco.data.datasets[0].data = economy.y;
         net.data.datasets[0].data = skyblock.y;
+        evs.data.datasets[0].data = events.y;
 
         eco.update()
         net.update()
+        evs.update()
 
 
 

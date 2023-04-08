@@ -69,6 +69,16 @@ setInterval(async () => {
     graphData.skyblock.x.push(time);
     graphData.skyblock.y.push(skyblockPlayersOnline);
 
+    let eventsPlayersOnline = 0;
+    try {
+        let events = await sb.playerCount("skyblock-events")
+        eventsPlayersOnline = events;
+    } catch {}
+    console.log(`[${time}] Events Players Online: ${eventsPlayersOnline}`);
+    graphData.events.x.push(time);
+    graphData.events.y.push(eventsPlayersOnline);
+
+
     updateGraphData(graphData)
 
 }, 60000);
