@@ -63,7 +63,7 @@ setInterval(async () => {
     let skyblockPlayersOnline = 0;
     try {
         let surv = await sb.survival()
-        skyblockPlayersOnline = surv.players_online;
+        skyblockPlayersOnline = surv.players_online || 0;
     } catch {}
     console.log(`[${time}] Skyblock Players Online: ${skyblockPlayersOnline}`);
     graphData.skyblock.x.push(time);
@@ -72,7 +72,7 @@ setInterval(async () => {
     let eventsPlayersOnline = 0;
     try {
         let events = await sb.playerCount("skyblock-events")
-        eventsPlayersOnline = events;
+        eventsPlayersOnline = events || 0;
     } catch {}
     console.log(`[${time}] Events Players Online: ${eventsPlayersOnline}`);
     graphData.events.x.push(time);
