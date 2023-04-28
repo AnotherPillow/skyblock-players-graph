@@ -53,7 +53,7 @@ setInterval(async () => {
     
     try {            
         let econ = await sb.economy()
-        economyPlayersOnline = econ.players_online;
+        economyPlayersOnline = econ.players_online || 0;
     } catch {}
 
     console.log(`[${time}] Economy Players Online: ${economyPlayersOnline}`);
@@ -63,7 +63,7 @@ setInterval(async () => {
     let skyblockPlayersOnline = 0;
     try {
         let surv = await sb.survival()
-        skyblockPlayersOnline = surv.players_online;
+        skyblockPlayersOnline = surv.players_online || 0;
     } catch {}
     console.log(`[${time}] Skyblock Players Online: ${skyblockPlayersOnline}`);
     graphData.skyblock.x.push(time);
