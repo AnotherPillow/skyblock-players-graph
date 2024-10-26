@@ -35,6 +35,21 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     })
 
+    const net_canvas = document.querySelector('#netchart')
+    net_canvas.addEventListener('click', (e) => {
+        var a = document.createElement('a');
+        a.href = net.toBase64Image();
+        a.target = '_blank';
+        a.click();
+    })
+    const eco_canvas = document.querySelector('#ecochart')
+    eco_canvas.addEventListener('click', () => {
+        var a = document.createElement('a');
+        a.href = eco.toBase64Image();
+        a.target = '_blank';
+        a.click();
+    })
+
 
     setInterval(async () => {
 
