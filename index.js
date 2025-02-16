@@ -26,6 +26,15 @@ if (fs.existsSync('graphData.json'))
     graphData = JSON.parse(fs.readFileSync('graphData.json'));
 
 
+app.use((req, res, next) => {
+    res.set({
+        "Content-Security-Policy": "default-src 'self'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'",
+        "X-Content-Security-Policy": "default-src 'self'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'",
+        "X-WebKit-CSP": "default-src 'self'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'",
+    });
+    next();
+});
+
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 })
