@@ -15,7 +15,14 @@ document.addEventListener('DOMContentLoaded', async function () {
             }]
         },
         options: {
-            animation: false
+            animation: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
     })
 
@@ -31,7 +38,14 @@ document.addEventListener('DOMContentLoaded', async function () {
             }]
         },
         options: {
-            animation: false
+            animation: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
     })
 
