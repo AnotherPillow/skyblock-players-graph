@@ -40,14 +40,7 @@ app.get('/data', function(req, res) {
 })
 
 setInterval(async () => {
-    let hours = new Date().getHours();
-    let minutes = new Date().getMinutes();
-    let seconds = new Date().getSeconds();
-    let day = new Date().getDate();
-    let month = new Date().getMonth() + 1;
-    let time = 
-        `${day > 9 ? day : '0' + day}-${month > 9 ? month : '0' + month} ${hours> 9 ? hours : '0' + hours}:${minutes> 9 ? minutes : '0' + minutes}:${seconds > 9 ? seconds : '0' + seconds}`;
-    
+    let time = new Date().toISOString()
 
     let economyPlayersOnline = 0;
     

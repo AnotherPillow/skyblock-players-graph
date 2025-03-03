@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 data: economy.y,
                 backgroundColor: 'rgba(0, 255, 0, 0.4)',
                 borderColor: 'rgba(0, 255, 0, 1)',
-
             }]
         },
         options: {
