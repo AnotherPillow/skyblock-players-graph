@@ -8,14 +8,26 @@
         body {
             background-color: #1a1a1a;
             color: #fff;
+            height: 100vh;
         }
         canvas {
             cursor: pointer;
         }
+        #graphContainer {
+            width: 9600px; /* Adjust as needed */
+            overflow-x: auto;
+            white-space: nowrap; /* Prevent wrapping */
+            height: 100vh;
+            max-height: 100vh;
+        }
+        #graph {
+            height: 100vh;
+        }
     </style>
 </head>
 <body>
-    <canvas id="ecochart" style="width:100%;max-width:1500px;overflow-x: scroll;"></canvas>
-    <canvas id="netchart" style="width:100%;max-width:1500px;overflow-x: scroll;"></canvas>
+    <div id="graphContainer">
+        <canvas id="graph" height="900"/>
+    </div>
 </body>
 </html>
